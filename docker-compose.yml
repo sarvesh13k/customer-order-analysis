@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    container_name: customer_order_analysis_app
+    command: python app/main.py
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+
+  test:
+    build: .
+    container_name: customer_order_analysis_test
+    command: pytest tests/test_main.py
+    volumes:
+      - .:/app
